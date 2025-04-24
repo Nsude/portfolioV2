@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Neue Montreal";
+  src: url(assets/fonts/montreal-regular.otf);
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1;
+}
+
+button {
+  cursor: pointer;
+}
+
+@theme {
+  --font-main: "Neue Montreal", "Sans Serif";
+  --color-myGray: #E3E3E3;
+  --color-myBlack: #000;
+  --color-myWhite: #FDFDFD;
+  --color-myAccent: #5DEA7C;
+}
