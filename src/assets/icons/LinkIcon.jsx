@@ -12,8 +12,8 @@ const LinkIcon = () => {
       <path
         d="M3.49365 10.5791L12.2172 1.85558M12.2172 1.85558H3.92083M12.2172 1.85558L12.2172 11.0398"
         stroke="black"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

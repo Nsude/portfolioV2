@@ -6,15 +6,16 @@
   font-weight: 400;
 }
 
+
+button {
+  cursor: pointer;
+}
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   line-height: 1;
-}
-
-button {
-  cursor: pointer;
+  background-color: var(--color-myWhite);
 }
 
 @theme {

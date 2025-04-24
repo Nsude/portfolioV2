@@ -9,12 +9,12 @@ const SendIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_23_170)">
+      <g clipPath="url(#clip0_23_170)">
         <path
           d="M12.4523 1.04773L6.68976 6.81024M12.4523 1.04773L8.78522 11.525L6.68976 6.81024M12.4523 1.04773L1.97498 4.71478L6.68976 6.81024"
           stroke="black"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>

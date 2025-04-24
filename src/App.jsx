@@ -1,11 +1,11 @@
 import './App.css'
-import NoIconBtn from './components/buttons/NoIconBtn'
+import CustomButton from './components/buttons/customButton'
 
 function App() {
 
   return (
     <div>
-      <NoIconBtn />
+      <CustomButton />
     </div>
   )
 }
