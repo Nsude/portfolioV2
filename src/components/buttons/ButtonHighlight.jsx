@@ -23,7 +23,9 @@ const ButtonHighlight = ({
 
   const handleMouseEnter = (e) => {
     // prevent on mobile
-    if (navigator.maxTouchPoints > 0) return;
+    // coarse = touch
+    // fine = cursor
+    if (window.matchMedia("(pointer: coarse)").matches) return;
 
     const { highlight, xPos, yPos } = getParams(e);
     mouseEnterFunc();

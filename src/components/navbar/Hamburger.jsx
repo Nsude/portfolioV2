@@ -44,7 +44,7 @@ const Hamburger = () => {
   return (
     <div className="fixed top-[22px] right-[20px] z-2 lg:hidden">
       <Magnetic>
-        <ButtonHighlight handleClick={() => setMenuOpen(!menuOpen)} styles={`${menuOpen ? 'bg-myAccent border-myAccent' : 'bg-none transition-[background] duration-400 delay-300'}`}>
+        <ButtonHighlight handleClick={() => setMenuOpen(!menuOpen)} styles={`${menuOpen ? 'bg-myAccent border-myAccent' : 'transition-[background] duration-400 delay-300'}`}>
           <div ref={containerRef} className="flex flex-col items-center justify-center gap-y-[6px] h-[45px] aspect-square ">
             <span ref={firstBarRef} className="w-[24px] h-[1px] bg-myBlack origin-center"></span>
             <span ref={secBarRef} className="w-[24px] h-[1px] bg-myBlack origin-center"></span>
