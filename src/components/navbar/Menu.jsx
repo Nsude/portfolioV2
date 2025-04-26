@@ -7,11 +7,14 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { CustomEase } from "gsap/all";
 import CurvedPath from "./CurvedPath";
+import { useLenis } from "lenis/react";
+
 
 const Menu = () => {
-  const { navLinks, socials, menuOpen } = useNavbarContext();
+  const { navLinks, socials, menuOpen, setMenuOpen, sectionRefs} = useNavbarContext();
   const menuContainerRef = useRef();
   const navLinksRef = useRef([]);
+  const lenis = useLenis();
 
   useGSAP(
     () => {
@@ -42,18 +45,31 @@ const Menu = () => {
       "mailto:meshachnsd@gmail.com?subject=Collaboration%Proposal";
   };
 
+  const navigateToSection = (sectionName) => {
+    const activeSection = sectionRefs[sectionName.toLowerCase()];
+    let section = activeSection.current;
+    if (!section) throw new Error("Section is undefined");
+
+    lenis.scrollTo(section, {
+      duration: 1.2,
+      easing: (t) => 1 - Math.pow(1 - t, 3) 
+    })
+
+    setMenuOpen(false);
+  }
+
   return (
     <nav
       ref={menuContainerRef}
-      className="fixed top-0 right-0 w-full h-full max-w-[500px] bg-myBlack z-1 pt-[160px] px-mobile translate-x-[130%] lg:hidden"
+      className="fixed top-0 right-0 w-full h-full max-w-[500px] bg-myBlack pt-[160px] px-mobile translate-x-[130%] lg:hidden"
     >
       <div className="mb-[90px]">
         <span className="text-14-body text-myWhite opacity-40">Navigation</span>
         <div className="flex flex-col gap-y-[25px] mt-[40px] text-45-title text-myWhite">
           {navLinks.map((item, i) => (
-            <Link ref={(el) => navLinksRef.current[i] = el} key={i} to={"/"}>
+            <button ref={(el) => navLinksRef.current[i] = el} key={i} className="text-left" onClick={() => navigateToSection(item)}>
               {item}
-            </Link>
+            </button>
           ))}
         </div>
       </div>

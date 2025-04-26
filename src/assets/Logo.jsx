@@ -1,6 +1,6 @@
 import React from "react";
 
-const Logo = () => {
+const Logo = ({color}) => {
   return (
     <svg
       width="30"
@@ -15,7 +15,7 @@ const Logo = () => {
         width="5"
         height="21"
         transform="rotate(45 14.8492 0.650759)"
-        fill="black"
+        fill={color || "black"}
       />
       <rect
         x="17.2384"
@@ -23,7 +23,7 @@ const Logo = () => {
         width="5"
         height="11.7575"
         transform="rotate(45 17.2384 9.57534)"
-        fill="black"
+        fill={color || "black"}
       />
       <rect
         x="26.163"
@@ -31,7 +31,7 @@ const Logo = () => {
         width="5"
         height="21"
         transform="rotate(45 26.163 11.9645)"
-        fill="black"
+        fill={color || "black"}
       />
     </svg>
   );

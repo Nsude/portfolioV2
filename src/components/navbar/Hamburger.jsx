@@ -42,7 +42,7 @@ const Hamburger = () => {
   }, {scope: containerRef.current, dependencies: [menuOpen]})
 
   return (
-    <div className="fixed top-[22px] right-[20px] z-2 lg:hidden">
+    <div className="fixed top-[22px] right-[20px] z-1 lg:hidden">
       <Magnetic>
         <ButtonHighlight handleClick={() => setMenuOpen(!menuOpen)} styles={`${menuOpen ? 'bg-myAccent border-myAccent' : 'transition-[background] duration-400 delay-300'}`}>
           <div ref={containerRef} className="flex flex-col items-center justify-center gap-y-[6px] h-[45px] aspect-square ">

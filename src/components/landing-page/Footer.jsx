@@ -2,7 +2,9 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <footer className='h-screen w-full' >
+      Footer
+    </footer>
   )
 }
 
