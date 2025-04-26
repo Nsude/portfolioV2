@@ -9,10 +9,11 @@ const Magnetic = ({ children }) => {
     const rect = con.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
+    let damp = 0.6;
 
     gsap.to(con, {
-      x: x * 0.3, // dampen effect
-      y: y * 0.3,
+      x: x * damp, // dampen effect
+      y: y * damp,
       ease: "power2.out",
       duration: 0.4,
     });

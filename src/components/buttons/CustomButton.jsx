@@ -18,7 +18,7 @@ const CustomButton = ({ text, icon, bg, full, handleClick = () => null }) => {
   return (
     <ButtonHighlight
       styles={`px-[22px] py-[8px] ${bg ? "bg-myGray" : ""} ${
-        full ? "w-full py-[15px] rounded-4xl" : ""
+        full ? "w-full py-[20px] rounded-4xl" : ""
       }`}
       mouseEnterFunc={() => animteText(true)}
       mouseLeaveFunc={() => animteText(false)}
