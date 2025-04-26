@@ -4,8 +4,9 @@ import gsap from "gsap";
 const ButtonHighlight = ({
   children,
   styles,
-  mouseEnterFunc,
-  mouseLeaveFunc,
+  handleClick = () => null,
+  mouseEnterFunc = () => null,
+  mouseLeaveFunc = () => null,
 }) => {
   const btnRef = useRef();
   const highlightRef = useRef();
@@ -21,6 +22,9 @@ const ButtonHighlight = ({
   };
 
   const handleMouseEnter = (e) => {
+    // prevent on mobile
+    if (navigator.maxTouchPoints > 0) return;
+
     const { highlight, xPos, yPos } = getParams(e);
     mouseEnterFunc();
 
@@ -69,15 +73,17 @@ const ButtonHighlight = ({
       onMouseEnter={(e) => handleMouseEnter(e)}
       onMouseMove={(e) => handleMouseMove(e)}
       onMouseLeave={(e) => handleMouseLeave(e)}
-      className={`relative overflow-hidden ${styles}`}
+      onClick={() => handleClick()}
+      className={`relative overflow-hidden ${styles} border-1 border-myGray rounded-3xl flex justify-center items-center`}
     >
-      <span className="absolute left-0 top-0 h-full w-full z-[-1] bg-myGray pointer-events-none" />
       <span
         ref={highlightRef}
         className="absolute left-0 top-0 h-full w-full bg-myAccent z-[0] opacity-0 pointer-events-none"
       />
       {/* Button Content */}
-      <div className="h-fit w-fit pointer-events-none">{children}</div>
+      <div className="h-fit w-fit pointer-events-none relative z-1">
+        {children}
+      </div>
     </button>
   );
 };
