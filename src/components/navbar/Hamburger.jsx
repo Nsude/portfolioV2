@@ -44,7 +44,6 @@ const Hamburger = () => {
 
   return (
     <div
-      className={``}
     >
       <Magnetic>
         <ButtonHighlight

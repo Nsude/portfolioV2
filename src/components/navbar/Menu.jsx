@@ -94,10 +94,10 @@ const Menu = () => {
 
   return (
     <>
-    <div className="fixed w-full h-full left-0 right-0 top-0 overflow-hidden lg:w-[450px] lg:h-[55vh] lg:min-h-[560px]  lg:left-[50%] lg:right-[unset] lg:top-[unset] lg:bottom-[102px] lg:translate-x-[-50%] z-[3]">
+    <div className="fixed w-full h-full left-0 right-0 top-0 overflow-hidden lg:w-[450px] lg:h-[55vh] lg:min-h-[560px]  lg:left-[50%] lg:right-[unset] lg:top-[unset] lg:bottom-[102px] lg:translate-x-[-50%] z-[3] pointer-events-none">
       <nav
         ref={menuContainerRef}
-        className="fixed top-0 right-0 w-full h-full max-w-[500px] bg-myBlack pt-[160px] lg:py-[45px] px-mobile translate-x-[130%] lg:right-[unset] lg:left-0 lg:bottom-0 lg:rounded-[15px]"
+        className="fixed top-0 right-0 w-full h-full max-w-[500px] bg-myBlack pt-[160px] lg:py-[45px] px-mobile translate-x-[130%] lg:right-[unset] lg:left-0 lg:bottom-0 lg:rounded-[15px] pointer-events-auto"
       >
         <div className="mb-[90px] lg:mb-[60px]">
           <span className="text-14-body text-myWhite opacity-40">
@@ -139,7 +139,7 @@ const Menu = () => {
         <CurvedPath />
       </nav>
     </div>
-    <div ref={blurOverlayRef} className="fixed left-0 top-0 w-full h-full z-2 bg-myWhite/20 backdrop-blur-[6px] opacity-0" />
+    <div ref={blurOverlayRef} className="fixed left-0 top-0 w-full h-full pointer-events-none z-[-1] bg-myWhite/20 backdrop-blur-[6px] opacity-0" />
     </>
   );
 };

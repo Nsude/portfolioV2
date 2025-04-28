@@ -147,7 +147,7 @@ const Navbar = () => {
 
       <div
         ref={hamburgerRef}
-        className="fixed top-[22px] right-[20px] z-[3] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[80px] lg:right-[unset] lg:top-[unset] bottom-[35px] "
+        className="fixed top-[22px] right-[20px] z-[5] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[80px] lg:right-[unset] lg:top-[unset] bottom-[35px] "
       >
         <Hamburger />
       </div>
