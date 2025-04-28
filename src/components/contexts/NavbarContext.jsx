@@ -23,6 +23,7 @@ const socials = [
 const NavbarContextProvider = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [sectionRefs, setSectionRefs] = useState({});
+  const [navbarHidden, setNavbarHidden] = useState(false);
 
   return (
     <navbarContext.Provider
@@ -33,6 +34,8 @@ const NavbarContextProvider = ({ children }) => {
         socials,
         sectionRefs,
         setSectionRefs,
+        navbarHidden, 
+        setNavbarHidden
       }}
     >
       {children}

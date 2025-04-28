@@ -5,6 +5,7 @@ const Magnetic = ({ children }) => {
   const containerRef = useRef();
 
   const handleMouseMove = (e) => {
+    if (window.innerWidth < 1024) return;
     const con = containerRef.current;
     const rect = con.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;

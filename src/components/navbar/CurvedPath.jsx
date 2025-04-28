@@ -20,7 +20,8 @@ const CurvedPath = () => {
     gsap.killTweensOf(path);
 
     if (menuOpen) {
-      gsap.to(path, { attr: {d: targetPath}, duration: .8, ease: CustomEase.create("custom", "0.76, 0, 0.24, 1")})
+      gsap.set(path, {attr: {d: initialPath}});
+      gsap.to(path, { attr: {d: targetPath}, duration: 0.9, ease: CustomEase.create("custom", "0.76, 0, 0.24, 1")})
     } else {
       gsap.to(path, { attr: {d: initialPath}, duration: .8, ease: CustomEase.create("custom", "0.76, 0, 0.24, 1")})
     }
@@ -30,11 +31,11 @@ const CurvedPath = () => {
   return (
     <svg
       ref={svgConRef}
-      className="absolute top-0 -left-[99px] h-full w-[100px] z-40"
+      className="absolute top-0 -left-[99px] h-full w-[100px] z-[3]"
       viewBox={`0 0 100 ${window.innerHeight}`}
       preserveAspectRatio="none"
     >
-      <path ref={pathRef} d={initialPath} fill="#000" />
+      <path ref={pathRef} d={targetPath} fill="#000" />
     </svg>
   );
 };
