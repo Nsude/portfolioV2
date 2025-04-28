@@ -3,12 +3,14 @@ import { useNavbarContext } from "../contexts/NavbarContext";
 import { Link } from "react-router-dom";
 import CustomButton from "../buttons/customButton";
 import EmailIcon from "../../assets/icons/EmailIcon";
+import CopiedIcon from "../../assets/icons/CopiedIcon";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { CustomEase } from "gsap/all";
 import CurvedPath from "./CurvedPath";
 import { useLenis } from "lenis/react";
 import useDevice from "../hooks/useDevice";
+import CopyIcon from "../../assets/icons/CopyIcon";
 
 const Menu = () => {
   const {
@@ -18,6 +20,7 @@ const Menu = () => {
     setMenuOpen,
     sectionRefs,
     navbarHidden,
+    copyEmail
   } = useNavbarContext();
   const menuContainerRef = useRef();
   const navLinksRef = useRef([]);
@@ -128,13 +131,26 @@ const Menu = () => {
           </div>
         </div>
 
-        <CustomButton
-          text={"meshachnsd@gmail.com"}
-          bg={true}
-          full={true}
-          icon={<EmailIcon />}
-          handleClick={() => openEmail()}
-        />
+        <div className="lg:hidden">
+          <CustomButton
+            text={"meshachnsd@gmail.com"}
+            bg={true}
+            full={true}
+            icon={<EmailIcon />}
+            handleClick={() => openEmail()}
+          />
+        </div>
+
+        <div className="hidden lg:block">
+          <CustomButton
+            text={"Copy email"}
+            activeIcon={<CopiedIcon />}
+            bg={true}
+            full={true}
+            icon={<CopyIcon />}
+            handleClick={() => copyEmail()}
+          />
+        </div>
 
         <CurvedPath />
       </nav>

@@ -1,6 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Logo from "../../assets/Logo";
 import CopyIcon from "../../assets/icons/CopyIcon";
+import CopiedIcon from "../../assets/icons/CopiedIcon";
 import CustomButton from "../buttons/customButton";
 import Magnetic from "../global/Magnetic";
 import Hamburger from "./Hamburger";
@@ -13,7 +14,7 @@ import { CustomEase } from "gsap/all";
 import useDevice from "../hooks/useDevice";
 
 const Navbar = () => {
-  const { navLinks, sectionRefs, setNavbarHidden } = useNavbarContext();
+  const { navLinks, sectionRefs, setNavbarHidden, copyEmail } = useNavbarContext();
   const lenis = useLenis();
   const containerRef = useRef();
   const hamburgerRef = useRef();
@@ -57,35 +58,34 @@ const Navbar = () => {
 
       if (window.innerWidth > 1023) {
         setNavbarHidden(isHidden);
-      };
+      }
     };
 
     // when a user resizes the window
     const handleResizeBehavior = () => {
       const isDesktopNow = deviceWidth > 1023;
-      
+
       if (isDesktopRef.current === isDesktopNow) return;
       isDesktopRef.current = isDesktopNow;
 
       if (!isDesktopNow) {
         // clear gsap animation properties on mobile
-        gsap.set(con, {clearProps: "all"});
-        gsap.set(ham, {clearProps: "all", xPercent: 0});
+        gsap.set(con, { clearProps: "all" });
+        gsap.set(ham, { clearProps: "all", xPercent: 0 });
       } else {
         // set gsap base properties on desktop
-        gsap.set(con, {y: 0});
-        gsap.set(ham, {y: 80, xPercent: -50});
+        gsap.set(con, { y: 0 });
+        gsap.set(ham, { y: 80, xPercent: -50 });
       }
 
       // remove event listener on mobile
       window.removeEventListener("scroll", scrollHandlerRef.current);
 
-      // reinit event listener on desktop 
+      // reinit event listener on desktop
       if (isDesktopNow.current) {
         window.addEventListener("scroll", scrollHandlerRef.current);
       }
-
-    }
+    };
 
     handleResizeBehavior();
     scrollHandlerRef.current = handleScroll;
@@ -100,7 +100,7 @@ const Navbar = () => {
     };
   }, [deviceWidth]);
 
-  // scroll section into view 
+  // scroll section into view
   const navigateToSection = (sectionName) => {
     const activeSection = sectionRefs[sectionName.toLowerCase()];
     let section = activeSection.current;
@@ -141,7 +141,12 @@ const Navbar = () => {
         </div>
 
         <div className="hidden lg:block">
-          <CustomButton text={"Copy email"} icon={<CopyIcon />} />
+          <CustomButton
+            text={"Copy email"}
+            activeIcon={<CopiedIcon />}
+            icon={<CopyIcon />}
+            handleClick={() => copyEmail()}
+          />
         </div>
       </nav>
 

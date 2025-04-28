@@ -1,9 +1,12 @@
 import React, { useRef } from "react";
 import gsap from "gsap";
 import ButtonHighlight from "./ButtonHighlight";
+import { CustomEase } from "gsap/all";
 
-const CustomButton = ({ text, icon, bg, full, handleClick = () => null }) => {
+const CustomButton = ({ text, icon, bg, full, activeIcon = null, handleClick = () => null }) => {
   const textConRef = useRef();
+  // const activeIconRef = useRef();
+  const iconsRef = useRef();
 
   const animteText = (textIn) => {
     let con = textConRef.current;
@@ -14,6 +17,31 @@ const CustomButton = ({ text, icon, bg, full, handleClick = () => null }) => {
       ease: "power2.out",
     });
   };
+  
+  const ease = CustomEase.create("custom", "0.76, 0, 0.24, 1");
+  const nativeHandleClick = () => {
+    handleClick();
+
+    console.log("llll")
+    // animate icon
+    if (!activeIcon) return;
+    console.log("working")
+
+    const icons = iconsRef.current;
+    gsap.killTweensOf(icons);
+    gsap.to(icons, {yPercent: -105, duration: .6, ease});
+  }
+
+  const handleMouseleave = () => {
+    animteText(false);
+
+    // animate icon
+    if (!activeIcon) return;
+
+    const icons = iconsRef.current;
+    gsap.killTweensOf(icons);
+    gsap.to(icons, {yPercent: 0, duration: .6, ease});
+  }
 
   return (
     <ButtonHighlight
@@ -21,14 +49,18 @@ const CustomButton = ({ text, icon, bg, full, handleClick = () => null }) => {
         full ? "w-full py-[20px] rounded-4xl" : ""
       }`}
       mouseEnterFunc={() => animteText(true)}
-      mouseLeaveFunc={() => animteText(false)}
-      handleClick={() => handleClick()}
+      mouseLeaveFunc={handleMouseleave}
+      handleClick={nativeHandleClick}
     >
       <div className="overflow-hidden flex gap-x-[6px] items-center relative text-16-body">
         {/* Icon */}
         {icon ? (
           <>
-            <div className="h-[13px] w-[13px] absolute ">{icon}</div>
+            <div ref={iconsRef} className="absolute top-1">
+              <div className="h-[13px] w-[13px]">{icon}</div>
+              <div className="h-[13px] w-[13px] translate-y-[110%]" >{activeIcon}</div>
+              {/* absolute so it doesn't scroll and the second acts as a placeholder */}
+            </div>
             <div className="h-[13px] w-[13px]" />
           </>
         ) : null}
