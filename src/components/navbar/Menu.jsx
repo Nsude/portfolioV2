@@ -35,9 +35,11 @@ const Menu = () => {
     gsap.killTweensOf(blur);
 
     if (menuOpen) {
+      gsap.set(blur, {zIndex: 2, pointerEvents: "auto"});
       gsap.to(blur, {opacity: 1, duration: .6});
     } else {
-      gsap.to(blur, {opacity: 0, duration: .8})
+      gsap.to(blur, {opacity: 0, duration: .8});
+      gsap.set(blur, {zIndex: -1, pointerEvents: "none"});
     }
   
   }, [menuOpen])
@@ -155,7 +157,7 @@ const Menu = () => {
         <CurvedPath />
       </nav>
     </div>
-    <div ref={blurOverlayRef} className="fixed left-0 top-0 w-full h-full pointer-events-none z-[-1] bg-myWhite/20 backdrop-blur-[6px] opacity-0" />
+    <div ref={blurOverlayRef} onClick={() => setMenuOpen(false)} className="fixed left-0 top-0 w-full h-full pointer-events-none z-[-1] bg-myWhite/20 backdrop-blur-[6px] opacity-0" />
     </>
   );
 };

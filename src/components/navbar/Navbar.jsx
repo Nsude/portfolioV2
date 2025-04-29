@@ -12,9 +12,11 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { CustomEase } from "gsap/all";
 import useDevice from "../hooks/useDevice";
+import Notification from "../global/Notification";
 
 const Navbar = () => {
-  const { navLinks, sectionRefs, setNavbarHidden, copyEmail } = useNavbarContext();
+  const { navLinks, sectionRefs, setNavbarHidden, copyEmail } =
+    useNavbarContext();
   const lenis = useLenis();
   const containerRef = useRef();
   const hamburgerRef = useRef();
@@ -114,6 +116,8 @@ const Navbar = () => {
 
   return (
     <>
+      <Notification />
+
       <div className="fixed left-[25px] z-[3] top-[22px] lg:left-[35px]">
         <Magnetic>
           <button onClick={() => navigateToSection("hero")}>
@@ -152,7 +156,7 @@ const Navbar = () => {
 
       <div
         ref={hamburgerRef}
-        className="fixed top-[22px] right-[20px] z-[5] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[80px] lg:right-[unset] lg:top-[unset] bottom-[35px] "
+        className="fixed top-[22px] right-[20px] z-[5] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[80px] lg:right-[unset] lg:top-[unset] bottom-[35px]"
       >
         <Hamburger />
       </div>

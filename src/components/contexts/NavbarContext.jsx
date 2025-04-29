@@ -24,14 +24,15 @@ const NavbarContextProvider = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [sectionRefs, setSectionRefs] = useState({});
   const [navbarHidden, setNavbarHidden] = useState(false);
-  const [emailCopied, setEmailCopied] = useState(true);
+  const [emailCopied, setEmailCopied] = useState(false);
 
   const copyEmail = async () => {
     const email = "meshachnsd@gmail.com";
 
     try {
       await navigator.clipboard.writeText(email);
-      setTimeout(() => setEmailCopied(false) ,2000);
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2000);
     } catch (error) {
       throw new Error(error);
     }
