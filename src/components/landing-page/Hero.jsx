@@ -3,6 +3,7 @@ import SlideIn from "../global/SlideIn";
 import { useNavbarContext } from "../contexts/NavbarContext";
 import useDevice from "../hooks/useDevice";
 import Marquee from "./Marquee";
+import ScrollOpacity from "../global/ScrollOpacity";
 
 const Hero = () => {
   const { navlinksLeft } = useNavbarContext();
@@ -16,26 +17,32 @@ const Hero = () => {
       >
         {
           deviceWidth > 768 ? (
-            <SlideIn key={"desktop"}>
-              <h1 className="text-45-title md:text-60-title">Frontend</h1>
-              <h1 className="text-45-title md:text-60-title">
-                Developer & Designer
-              </h1>
-            </SlideIn>
+            <ScrollOpacity>
+              <SlideIn key={"desktop"}>
+                <h1 className="text-45-title md:text-60-title">Frontend</h1>
+                <h1 className="text-45-title md:text-60-title">
+                  Developer & Designer
+                </h1>
+              </SlideIn>
+            </ScrollOpacity>
           ) : (
-            <SlideIn key={"mobile"}>
-              <h1 className="text-45-title md:text-60-title">Frontend</h1>
-              <h1 className="text-45-title md:text-60-title">Developer &</h1>
-              <h1 className="text-45-title md:text-60-title">Designer</h1>
-            </SlideIn>
+            <ScrollOpacity>
+              <SlideIn key={"mobile"}>
+                <h1 className="text-45-title md:text-60-title">Frontend</h1>
+                <h1 className="text-45-title md:text-60-title">Developer &</h1>
+                <h1 className="text-45-title md:text-60-title">Designer</h1>
+              </SlideIn>
+            </ScrollOpacity>
           )
         }
         
-        <SlideIn delay={0.15}>
-          <span className="block opacity-[0.25] text-25-body w-[70%] lg:w-full">
-            Saving the world, one pixel at a time.
-          </span>
-        </SlideIn>
+        <ScrollOpacity>
+          <SlideIn delay={0.15}>
+            <span className="block text-25-body w-[70%] lg:w-full">
+              Saving the world, one pixel at a time.
+            </span>
+          </SlideIn>
+        </ScrollOpacity>
       </div>
 
       <div className="absolute bottom-0 left-0 w-full">

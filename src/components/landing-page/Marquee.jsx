@@ -21,6 +21,7 @@ const Marquee = ({ children }) => {
       const createAnimation = (direction, velocity = 0) => {
         // to ensure seamless direction change from the last position
         const currentPosition = gsap.getProperty(marquee, "xPercent");
+        let normalisedPosition = currentPosition % 33.33;
 
         // kill old animation
         if (animationInstance) {
@@ -33,7 +34,7 @@ const Marquee = ({ children }) => {
         const velocityFactor = Math.min(absVelocity / 2000, 1); // normalize velocity
         const duration = baseDuration - velocityFactor * (baseDuration - minDuration);
 
-        let endPosition = direction > 0 ? currentPosition - 33.33 : currentPosition + 33.33;
+        let endPosition = direction > 0 ? normalisedPosition - 33.33 : normalisedPosition + 33.33;
 
         animationInstance = gsap.fromTo(marquee, 
           { xPercent: currentPosition },
@@ -43,6 +44,9 @@ const Marquee = ({ children }) => {
           ease: "none",
           immediateRender: false
         });
+
+        // update current direction before next call
+        currentDirection = direction > 0 ? 1 : -1;
 
         return animationInstance;
       };
@@ -64,8 +68,6 @@ const Marquee = ({ children }) => {
           if (newDirection !== currentDirection || Math.abs(velocity) > 10) {
             createAnimation(newDirection, velocity);
           } 
-
-          currentDirection = newDirection;
         },
       });
 

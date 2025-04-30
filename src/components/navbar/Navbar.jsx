@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Logo from "../../assets/Logo";
 import CopyIcon from "../../assets/icons/CopyIcon";
 import CopiedIcon from "../../assets/icons/CopiedIcon";
@@ -116,7 +116,7 @@ const Navbar = () => {
   };
 
   // set navlinks left for layout alignment
-  useEffect(() => {
+  useLayoutEffect(() => {
     const links = navlinksRef.current;
     if (!links) return;
 

@@ -1,7 +1,6 @@
 import { useGSAP } from '@gsap/react';
 import React, { useRef } from 'react';
 import gsap from 'gsap';
-import { CustomEase } from 'gsap/all';
 
 const SlideIn = ({children, delay = 0}) => {
   const animBoxesRef = useRef([]);
@@ -13,8 +12,6 @@ const SlideIn = ({children, delay = 0}) => {
 
     if (!boxes || !con) return;
     gsap.killTweensOf(boxes);
-
-    let ease = CustomEase.create("custom", "0.76, 0, 0.24, 1");
     
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
