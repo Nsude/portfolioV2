@@ -20,7 +20,8 @@ const Menu = () => {
     setMenuOpen,
     sectionRefs,
     navbarHidden,
-    copyEmail
+    copyEmail,
+    emailCopied
   } = useNavbarContext();
   const menuContainerRef = useRef();
   const navLinksRef = useRef([]);
@@ -38,8 +39,10 @@ const Menu = () => {
       gsap.set(blur, {zIndex: 2, pointerEvents: "auto"});
       gsap.to(blur, {opacity: 1, duration: .6});
     } else {
-      gsap.to(blur, {opacity: 0, duration: .8});
-      gsap.set(blur, {zIndex: -1, pointerEvents: "none"});
+      gsap.to(blur, {opacity: 0, duration: .8})
+      .then(() => {
+        gsap.set(blur, {zIndex: -1, pointerEvents: "none"});
+      })
     }
   
   }, [menuOpen])
@@ -72,7 +75,7 @@ const Menu = () => {
           "<"
         );
       } else {
-        tl.to(con, { transform: "translateX(130%)", duration: 0.8, ease });
+        tl.to(con, { transform: "translateX(140%)", duration: 0.8, ease });
         tl.to(links, { x: 80, duration: 0.8, ease, stagger: 0.05 }, "<");
       }
     },
@@ -102,7 +105,7 @@ const Menu = () => {
     <div className="fixed w-full h-full left-0 right-0 top-0 overflow-hidden lg:w-[450px] lg:h-[55vh] lg:min-h-[560px]  lg:left-[50%] lg:right-[unset] lg:top-[unset] lg:bottom-[102px] lg:translate-x-[-50%] z-[3] pointer-events-none">
       <nav
         ref={menuContainerRef}
-        className="fixed top-0 right-0 w-full h-full max-w-[500px] bg-myBlack pt-[160px] lg:py-[45px] px-mobile translate-x-[130%] lg:right-[unset] lg:left-0 lg:bottom-0 lg:rounded-[15px] pointer-events-auto"
+        className="fixed top-0 right-0 w-full h-full max-w-[500px] bg-myBlack pt-[160px] lg:py-[45px] px-mobile translate-x-[140%] lg:right-[unset] lg:left-0 lg:bottom-0 lg:rounded-[15px] pointer-events-auto"
       >
         <div className="mb-[90px] lg:mb-[60px]">
           <span className="text-14-body text-myWhite opacity-40">
@@ -151,6 +154,7 @@ const Menu = () => {
             full={true}
             icon={<CopyIcon />}
             handleClick={() => copyEmail()}
+            disabled={emailCopied}
           />
         </div>
 

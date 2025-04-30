@@ -7,6 +7,7 @@ const ButtonHighlight = ({
   handleClick = () => null,
   mouseEnterFunc = () => null,
   mouseLeaveFunc = () => null,
+  disabled = false
 }) => {
   const btnRef = useRef();
   const highlightRef = useRef();
@@ -69,14 +70,20 @@ const ButtonHighlight = ({
     });
   };
 
+  const nativeHandleClick = () => {
+    if (disabled) return;
+    handleClick();
+  }
+
   return (
     <button
       ref={btnRef}
       onMouseEnter={(e) => handleMouseEnter(e)}
       onMouseMove={(e) => handleMouseMove(e)}
       onMouseLeave={(e) => handleMouseLeave(e)}
-      onClick={() => handleClick()}
+      onClick={nativeHandleClick}
       className={`relative overflow-hidden ${styles} border-1 border-myGray rounded-3xl flex justify-center items-center`}
+      style={{pointerEvents: disabled ? "none" : "all", opacity: disabled ? 0.4 : 1}}
     >
       <span
         ref={highlightRef}

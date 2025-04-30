@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Logo from "../../assets/Logo";
 import CopyIcon from "../../assets/icons/CopyIcon";
 import CopiedIcon from "../../assets/icons/CopiedIcon";
@@ -15,7 +15,7 @@ import useDevice from "../hooks/useDevice";
 import Notification from "../global/Notification";
 
 const Navbar = () => {
-  const { navLinks, sectionRefs, setNavbarHidden, copyEmail } =
+  const { navLinks, sectionRefs, setNavbarHidden, copyEmail, setNavlinksLeft , emailCopied} =
     useNavbarContext();
   const lenis = useLenis();
   const containerRef = useRef();
@@ -23,6 +23,7 @@ const Navbar = () => {
   const { width: deviceWidth } = useDevice();
   const isDesktopRef = useRef(deviceWidth > 1023);
   const scrollHandlerRef = useRef();
+  const navlinksRef = useRef();
 
   useGSAP(() => {
     const con = containerRef.current;
@@ -114,6 +115,16 @@ const Navbar = () => {
     });
   };
 
+  // set navlinks left for layout alignment
+  useEffect(() => {
+    const links = navlinksRef.current;
+    if (!links) return;
+
+    const rect = links.getBoundingClientRect();
+    setNavlinksLeft(rect.left);
+
+  }, [deviceWidth]);
+
   return (
     <>
       <Notification />
@@ -133,7 +144,10 @@ const Navbar = () => {
         <div className="flex justify-between lg:w-[50%] 2xl:w-[40%]">
           <div className="w-[24px] aspect-square pointer-events-none bg-transparent" />
 
-          <div className="hidden lg:flex gap-x-[12px] items-center">
+          <div
+            ref={navlinksRef}
+            className="hidden lg:flex gap-x-[12px] items-center"
+          >
             {navLinks.map((item, i) => (
               <CustomButton
                 key={i}
@@ -150,6 +164,7 @@ const Navbar = () => {
             activeIcon={<CopiedIcon />}
             icon={<CopyIcon />}
             handleClick={() => copyEmail()}
+            disabled={emailCopied}
           />
         </div>
       </nav>

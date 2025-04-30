@@ -25,6 +25,7 @@ const NavbarContextProvider = ({ children }) => {
   const [sectionRefs, setSectionRefs] = useState({});
   const [navbarHidden, setNavbarHidden] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
+  const [navlinksLeft, setNavlinksLeft] = useState(0);
 
   const copyEmail = async () => {
     const email = "meshachnsd@gmail.com";
@@ -50,7 +51,9 @@ const NavbarContextProvider = ({ children }) => {
         navbarHidden, 
         setNavbarHidden,
         copyEmail,
-        emailCopied
+        emailCopied, 
+        navlinksLeft, 
+        setNavlinksLeft
       }}
     >
       {children}

@@ -5,7 +5,6 @@ import gsap from 'gsap'
 import { CustomEase } from 'gsap/all'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import { useEffect, useRef } from 'react'
-import Lenis from 'lenis'
 import ReactLenis from 'lenis/react'
 
 gsap.registerPlugin(CustomEase, ScrollTrigger);

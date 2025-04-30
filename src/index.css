@@ -6,7 +6,6 @@
   font-weight: 400;
 }
 
-
 button {
   cursor: pointer;
 }
@@ -17,6 +16,7 @@ body {
   line-height: 1;
   background-color: var(--color-myWhite);
   font-family: var(--font-main);
+  color: var(--color-myBlack);
 }
 
 @theme {
@@ -50,9 +50,17 @@ body {
   --text-45-title--letter-spacing: 0ch;
   --text-45-body--line-height: 1.1;
 
-  --text-60-title: 60px
+  --text-60-title: 60px;
   --text-60-title--letter-spacing: 0ch;
   --text-60-body--line-height: 0.94;
+
+  --text-large-d: 280px;
+  --text-large-d--letter-spacing: -0.03ch;
+  --text-large-d--line-height: 0.94;
+
+  --text-large-m: 150px;
+  --text-large-m--letter-spacing: -0.01ch;
+  --text-large-m--line-height: 0.94;
 
 
   /* ===== PADDING ===== */

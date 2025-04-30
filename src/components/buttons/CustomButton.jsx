@@ -3,9 +3,8 @@ import gsap from "gsap";
 import ButtonHighlight from "./ButtonHighlight";
 import { CustomEase } from "gsap/all";
 
-const CustomButton = ({ text, icon, bg, full, activeIcon = null, handleClick = () => null }) => {
+const CustomButton = ({ text, icon, bg, full, activeIcon = null, handleClick = () => null, disabled = false}) => {
   const textConRef = useRef();
-  // const activeIconRef = useRef();
   const iconsRef = useRef();
 
   const animteText = (textIn) => {
@@ -51,6 +50,7 @@ const CustomButton = ({ text, icon, bg, full, activeIcon = null, handleClick = (
       mouseEnterFunc={() => animteText(true)}
       mouseLeaveFunc={handleMouseleave}
       handleClick={nativeHandleClick}
+      disabled={disabled}
     >
       <div className="overflow-hidden flex gap-x-[6px] items-center relative text-16-body">
         {/* Icon */}
