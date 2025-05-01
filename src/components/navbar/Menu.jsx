@@ -1,16 +1,16 @@
 import React, { useEffect, useRef } from "react";
 import { useNavbarContext } from "../contexts/NavbarContext";
 import { Link } from "react-router-dom";
-import CustomButton from "../buttons/customButton";
+import CustomButton from "../buttons/CustomButton";
 import EmailIcon from "../../assets/icons/EmailIcon";
 import CopiedIcon from "../../assets/icons/CopiedIcon";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { CustomEase } from "gsap/all";
 import CurvedPath from "./CurvedPath";
 import { useLenis } from "lenis/react";
 import useDevice from "../hooks/useDevice";
 import CopyIcon from "../../assets/icons/CopyIcon";
+import { myEase1 } from "../utility/contansts";
 
 const Menu = () => {
   const {
@@ -63,7 +63,7 @@ const Menu = () => {
       gsap.killTweensOf([con, ...links]);
 
       const tl = gsap.timeline();
-      let ease = CustomEase.create("custom", "0.76, 0, 0.24, 1");
+      let ease = myEase1;
 
       if (menuOpen) {
         tl.to(con, { transform: "translateX(0)", duration: 0.8, ease });

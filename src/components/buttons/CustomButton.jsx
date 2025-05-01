@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import gsap from "gsap";
 import ButtonHighlight from "./ButtonHighlight";
-import { CustomEase } from "gsap/all";
+import { myEase1 } from "../utility/contansts";
 
 const CustomButton = ({ text, icon, bg, full, activeIcon = null, handleClick = () => null, disabled = false}) => {
   const textConRef = useRef();
@@ -17,7 +17,7 @@ const CustomButton = ({ text, icon, bg, full, activeIcon = null, handleClick = (
     });
   };
   
-  const ease = CustomEase.create("custom", "0.76, 0, 0.24, 1");
+  const ease = myEase1;
   const nativeHandleClick = () => {
     handleClick();
 

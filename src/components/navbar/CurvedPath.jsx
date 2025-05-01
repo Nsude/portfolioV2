@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useNavbarContext } from "../contexts/NavbarContext";
-import { CustomEase } from "gsap/all";
+import { myEase1 } from "../utility/contansts";
 
 const CurvedPath = () => {
   const {menuOpen} = useNavbarContext();
@@ -21,9 +21,9 @@ const CurvedPath = () => {
 
     if (menuOpen) {
       gsap.set(path, {attr: {d: initialPath}});
-      gsap.to(path, { attr: {d: targetPath}, duration: 0.9, ease: CustomEase.create("custom", "0.76, 0, 0.24, 1")})
+      gsap.to(path, { attr: {d: targetPath}, duration: 0.9, ease: myEase1})
     } else {
-      gsap.to(path, { attr: {d: initialPath}, duration: .8, ease: CustomEase.create("custom", "0.76, 0, 0.24, 1")})
+      gsap.to(path, { attr: {d: initialPath}, duration: .8, ease: myEase1})
     }
 
   }, {scope: svgConRef.current, dependencies: [menuOpen]})

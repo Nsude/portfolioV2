@@ -2,7 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Logo from "../../assets/Logo";
 import CopyIcon from "../../assets/icons/CopyIcon";
 import CopiedIcon from "../../assets/icons/CopiedIcon";
-import CustomButton from "../buttons/customButton";
+import CustomButton from "../buttons/CustomButton";
 import Magnetic from "../global/Magnetic";
 import Hamburger from "./Hamburger";
 import Menu from "./Menu";
@@ -13,6 +13,7 @@ import gsap from "gsap";
 import { CustomEase } from "gsap/all";
 import useDevice from "../hooks/useDevice";
 import Notification from "../global/Notification";
+import { myEase1 } from "../utility/contansts";
 
 const Navbar = () => {
   const { navLinks, sectionRefs, setNavbarHidden, copyEmail, setNavlinksLeft , emailCopied} =
@@ -30,7 +31,7 @@ const Navbar = () => {
     const ham = hamburgerRef.current;
 
     let isHidden = false; // track navbar state
-    let ease = CustomEase.create("custom", "0.76, 0, 0.24, 1");
+    let ease = myEase1;
 
     const showNavbar = () => {
       if (!isDesktopRef.current) return;

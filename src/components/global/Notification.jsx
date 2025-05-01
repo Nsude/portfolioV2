@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { CustomEase } from "gsap/all";
 import ToastShape from "../../assets/icons/ToastShape";
+import { myEase1 } from "../utility/contansts";
 
 const Notification = () => {
   const {emailCopied} = useNavbarContext();
@@ -16,7 +17,7 @@ const Notification = () => {
     const shape = shapeRef.current
     
     gsap.killTweensOf(con, shape);
-    const ease = CustomEase.create("custom", "0.76, 0, 0.24, 1");
+    const ease = myEase1;
 
     if (emailCopied) {
       gsap.to(con, { transform: "translateY(0)", duration: .8, ease });

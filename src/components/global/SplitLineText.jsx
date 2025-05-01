@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import useDevice from "../hooks/useDevice";
 import { useGSAP } from "@gsap/react";
-import { CustomEase, SplitText } from "gsap/all";
+import { SplitText } from "gsap/all";
 import gsap from "gsap";
+import { myEase1 } from "../utility/contansts";
+import observeElement from "../utility/customObserver";
 
 const SplitLineText = ({ text, textstyles }) => {
   const containerRef = useRef();
@@ -18,53 +20,37 @@ const SplitLineText = ({ text, textstyles }) => {
       // kill previous animations on rerender
       gsap.killTweensOf(textCon);
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-
-            SplitText.create(textCon, {
-              type: "lines",
-              autoSplit: true,
-              onSplit: (self) => {
-                // create masks
-                self.lines.forEach((line) => {
-                  const mask = document.createElement("div");
-                  mask.style.overflow = "hidden";
-                  line.parentNode?.insertBefore(mask, line);
-                  mask.appendChild(line);
-                });
-
-                // animate lines
-                gsap.from(self.lines, {
-                  y: 20,
-                  autoAlpha: 0,
-                  stagger: {
-                    amount: 0.25,
-                  },
-                  ease: CustomEase.create("custom", "0.76, 0, 0.24, 1"),
-                });
-              },
+      observeElement(mainCon, () => {
+        SplitText.create(textCon, {
+          type: "lines",
+          autoSplit: true,
+          onSplit: (self) => {
+            // create masks
+            self.lines.forEach((line) => {
+              const mask = document.createElement("div");
+              mask.style.overflow = "hidden";
+              line.parentNode?.insertBefore(mask, line);
+              mask.appendChild(line);
             });
 
-            observer.disconnect();
-          });
-        },
-        { threshold: 0.05 }
-      );
-
-      // init observer
-      observer.observe(mainCon);
-
-      return () => {
-        observer.unobserve(mainCon);
-      };
+            // animate lines
+            gsap.from(self.lines, {
+              y: 20,
+              autoAlpha: 0,
+              stagger: {
+                amount: 0.25,
+              },
+              ease: myEase1,
+            });
+          },
+        });
+      }, 0.05)
     },
     { scope: containerRef }
   );
 
   return (
-    <div ref={containerRef} className="w-full">
+    <div ref={containerRef}>
       <p ref={textRef} className={textstyles}>
         {text}
       </p>

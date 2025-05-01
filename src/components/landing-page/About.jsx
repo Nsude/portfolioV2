@@ -28,7 +28,7 @@ const About = () => {
         style={{ left: deviceWidth > 1023 ? navlinksLeft : 20 }}
       >
         <ScrollOpacity>
-          <h3 className="text-16-body mb-[40px]">About Me</h3>
+          <SplitLineText text={"About Me"} textstyles={"text-16-body mb-[40px]"} />
         </ScrollOpacity>
 
         <div>

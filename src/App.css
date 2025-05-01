@@ -1,0 +1,26 @@
+/* PROJECT LIST */
+.p-list-con:not(:first-child)
+.p-list-first-border {
+  display: none;
+}
+
+.p-list-con {
+  transition: color .15s;
+}
+
+.p-list-con:hover {
+  color: var(--color-myAccent);
+}
+
+.p-list-start-text, 
+.p-list-end-text {
+  transition: transform .25s cubic-bezier(0.40, 0, 0.24, 1);
+}
+
+.p-list-con:hover .p-list-start-text {
+  transform: translateX(12px);
+}
+
+.p-list-con:hover .p-list-end-text {
+  transform: translateX(-12px);
+}
