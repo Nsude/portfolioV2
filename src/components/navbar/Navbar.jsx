@@ -113,6 +113,7 @@ const Navbar = () => {
     lenis.scrollTo(section, {
       duration: 1.2,
       easing: (t) => 1 - Math.pow(1 - t, 3),
+      offset: sectionName.toLowerCase() === "projects" ? -window.innerHeight/4 : 0
     });
   };
 
