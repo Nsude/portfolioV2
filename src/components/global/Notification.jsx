@@ -30,11 +30,11 @@ const Notification = () => {
   }, {scope: containerRef.current, dependencies: [emailCopied]})
 
   return (
-    <div ref={containerRef} className="fixed z-[5] left-[35px] bottom-[35px] hidden lg:flex items-center gap-x-[10px] bg-myAccent rounded-[10px] w-[275px] h-[80px] px-[12px] py-[15px] translate-y-[150%] border-2 border-myBlack shadow-2xl">
-      <div className="w-[50px] aspect-square bg-myBlack flex justify-center items-center rounded-[6px]">
-        <Checkmark />
+    <div ref={containerRef} className="fixed z-[5] left-[35px] bottom-[35px] hidden lg:flex items-center gap-x-[10px] bg-myBlack rounded-[10px] w-[275px] h-[80px] px-[12px] py-[15px] translate-y-[150%] border-2 border-myBlack shadow-2xl">
+      <div className="w-[50px] aspect-square bg-myAccent flex justify-center items-center rounded-[6px]">
+        <Checkmark color={"#000"} />
       </div>
-      <div className=" text-myBlack">
+      <div className=" text-myWhite">
         <span className="opacity-40 text-14-body">Notification</span>
         <h3 className="text-25-body">eMail Copied</h3>
       </div>
