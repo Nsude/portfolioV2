@@ -2,12 +2,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Layout from './components/Layout'
 import gsap from 'gsap'
-import { CustomEase } from 'gsap/all'
+import { CustomEase, SplitText } from 'gsap/all'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import { useEffect, useRef } from 'react'
 import ReactLenis from 'lenis/react'
 
-gsap.registerPlugin(CustomEase, ScrollTrigger);
+gsap.registerPlugin(CustomEase, ScrollTrigger, SplitText);
 
 function App() {
   const lenisRef = useRef();

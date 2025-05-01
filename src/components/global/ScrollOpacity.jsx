@@ -29,7 +29,7 @@ const ScrollOpacity = ({ children, start = 60 }) => {
               opacity = 1 - ((progress - 0.5) * 2 * difference); // 0.5 to 0: 50% here is 0%
             }
 
-            gsap.set(con, {opacity});
+            gsap.to(con, {opacity, duration: .4});
           }
         }
       })

@@ -41,9 +41,10 @@ const About = () => {
                 <span className="text-14-body lg:absolute lg:bottom-[8px] lg:left-[-50px]">
                   {index}
                 </span>
-                <SplitLineText>
-                  <p className="text-25-body md:text-32-body">{story}</p>
-                </SplitLineText>
+                <SplitLineText 
+                  text={story}
+                  textstyles={'text-25-body md:text-32-body'}
+                />
               </div>
             </ScrollOpacity>
           ))}

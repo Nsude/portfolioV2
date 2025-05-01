@@ -76,7 +76,7 @@ const Marquee = ({ children }) => {
   );
 
   return (
-    <div ref={containerRef} className="overflow-hidden flex justify-center">
+    <div ref={containerRef} className="overflow-hidden flex justify-center pointer-events-none">
       <div ref={marqueeRef} className="flex w-max">
         {children}
         {children}

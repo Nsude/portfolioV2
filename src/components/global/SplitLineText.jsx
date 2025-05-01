@@ -1,26 +1,75 @@
-import React, { useEffect, useRef } from 'react'
-import useDevice from '../hooks/useDevice';
+import React, { useEffect, useRef } from "react";
+import useDevice from "../hooks/useDevice";
+import { useGSAP } from "@gsap/react";
+import { CustomEase, SplitText } from "gsap/all";
+import gsap from "gsap";
 
-const SplitLineText = ({children}) => {
+const SplitLineText = ({ text, textstyles }) => {
+  const containerRef = useRef();
   const textRef = useRef();
-  const {width: deviceWidth} = useDevice();
+  const { width: deviceWidth } = useDevice();
 
-  useEffect(() => {
-    const textCon = textRef.current;
-    if (!textCon) return;
+  useGSAP(
+    () => {
+      const textCon = textRef.current;
+      const mainCon = containerRef.current;
+      if (!textCon || !mainCon) return;
 
-    let text = textCon.innerText;
-    let rect = textCon.getBoundingClientRect();
-    
-  }, [deviceWidth])
+      // kill previous animations on rerender
+      gsap.killTweensOf(textCon);
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            SplitText.create(textCon, {
+              type: "lines",
+              autoSplit: true,
+              onSplit: (self) => {
+                // create masks
+                self.lines.forEach((line) => {
+                  const mask = document.createElement("div");
+                  mask.style.overflow = "hidden";
+                  line.parentNode?.insertBefore(mask, line);
+                  mask.appendChild(line);
+                });
+
+                // animate lines
+                gsap.from(self.lines, {
+                  y: 20,
+                  autoAlpha: 0,
+                  stagger: {
+                    amount: 0.25,
+                  },
+                  ease: CustomEase.create("custom", "0.76, 0, 0.24, 1"),
+                });
+              },
+            });
+
+            observer.disconnect();
+          });
+        },
+        { threshold: 0.05 }
+      );
+
+      // init observer
+      observer.observe(mainCon);
+
+      return () => {
+        observer.unobserve(mainCon);
+      };
+    },
+    { scope: containerRef }
+  );
 
   return (
-    <div>
-      <div ref={textRef}>
-        {children}
-      </div>
+    <div ref={containerRef} className="w-full">
+      <p ref={textRef} className={textstyles}>
+        {text}
+      </p>
     </div>
-  )
-}
+  );
+};
 
 export default SplitLineText;
