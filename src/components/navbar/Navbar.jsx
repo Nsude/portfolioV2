@@ -10,7 +10,6 @@ import { useNavbarContext } from "../contexts/NavbarContext";
 import { useLenis } from "lenis/react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { CustomEase } from "gsap/all";
 import useDevice from "../hooks/useDevice";
 import Notification from "../global/Notification";
 import { myEase1 } from "../utility/contansts";
@@ -35,15 +34,15 @@ const Navbar = () => {
 
     const showNavbar = () => {
       if (!isDesktopRef.current) return;
-      gsap.to(con, { y: 0, duration: 0.8, ease });
-      gsap.to(ham, { y: 80, xPercent: -50, duration: 0.8, ease });
+      gsap.to(con, { y: 0, duration: 0.6, ease });
+      gsap.to(ham, { y: 100, xPercent: -50, duration: 0.8, ease });
 
       isHidden = false;
     };
 
     const hideNavbar = () => {
       if (!isDesktopRef.current) return;
-      gsap.to(con, { y: -100, duration: 0.8, ease });
+      gsap.to(con, { y: -100, duration: 0.6, ease });
       gsap.to(ham, { y: 0, xPercent: -50, duration: 0.8, ease });
 
       isHidden = true;
@@ -173,7 +172,7 @@ const Navbar = () => {
 
       <div
         ref={hamburgerRef}
-        className="fixed top-[22px] right-[20px] z-[5] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[80px] lg:right-[unset] lg:top-[unset] bottom-[35px]"
+        className="fixed top-[22px] right-[20px] z-[5] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[100px] lg:right-[unset] lg:top-[unset] bottom-[35px]"
       >
         <Hamburger />
       </div>
