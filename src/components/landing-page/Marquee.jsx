@@ -57,7 +57,7 @@ const Marquee = ({ children }) => {
 
       // velocity control
       gsap.to(velocitySlider, {
-        x: "-=400px",
+        x: "-=150px",
         scrollTrigger: {
           trigger: con,
           start: "top bottom",

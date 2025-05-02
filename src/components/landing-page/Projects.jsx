@@ -1,4 +1,3 @@
-import React from "react";
 import ProjectsList from "./ProjectsList";
 import PreviewModal from "./PreviewModal";
 import SplitLineText from "../global/SplitLineText";
@@ -51,15 +50,15 @@ const listItems = [
 const Projects = () => {
   return (
     <section className="w-full h-screen text-60-title">
-      <div className="relative flex justify-between items-center w-full h-[40px] px-mobile lg:px-desktop-h ">
-        <div className="text-16-body flex justify-between w-[30%]">
-          <SplitLineText text={"Project"} textstyles={"p-list-start-text"} />
+      <div className="relative flex justify-between items-center w-full h-[40px] px-mobile lg:px-desktop-h opacity-45">
+        <div className="text-16-body flex justify-between w-[30%] text-14-body">
+          <SplitLineText text={"Project"} />
           <SplitLineText text={"Service"} />
         </div>
 
-        <div className="text-16-body flex justify-between w-[30%]">
+        <div className="text-16-body flex justify-between w-[30%] text-14-body">
           <SplitLineText text={"Duration"} />
-          <SplitLineText text={"Year"} textstyles={"p-list-end-text"} />
+          <SplitLineText text={"Year"} />
         </div>
       </div>
 

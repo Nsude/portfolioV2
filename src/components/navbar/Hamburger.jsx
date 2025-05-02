@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import ButtonHighlight from "../buttons/ButtonHighlight";
 import Magnetic from "../global/Magnetic";
 import { useGSAP } from "@gsap/react";
