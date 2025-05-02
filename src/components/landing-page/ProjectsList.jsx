@@ -114,7 +114,7 @@ const ProjectsList = ({
       ref={containerRef} 
       onMouseEnter={(e) => handleMouseEnter(e)}
       onMouseLeave={(e) => handleMouseLeave(e)}
-      className="group relative flex justify-between items-center w-full h-[40px] px-mobile lg:px-desktop-h p-list-con">
+      className="relative flex justify-between items-center w-full h-[40px] px-mobile lg:px-desktop-h p-list-con">
 
       <span ref={overlayRef} className="absolute z-[-1] left-[20px] lg:left-[35px] right-[20px] lg:right-[35px] top-0 h-full bg-myBlack" />
 

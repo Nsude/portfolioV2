@@ -16,6 +16,8 @@ const Marquee = ({ children }) => {
       const velocitySlider = velocitySliderRef.current;
       let animationInstance = null;
 
+      if (!(marquee && con && velocitySlider)) return;
+
       const createAnimation = (direction) => {
         if (animationInstance) {
           animationInstance.kill();
@@ -55,12 +57,14 @@ const Marquee = ({ children }) => {
 
       // velocity control
       gsap.to(velocitySlider, {
-        x: "-=300px",
-        trigger: con,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 1,
-      })
+        x: "-=400px",
+        scrollTrigger: {
+          trigger: con,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        }
+      }).then(() => gsap.set(velocitySlider, {x: 0}))
       
 
     },

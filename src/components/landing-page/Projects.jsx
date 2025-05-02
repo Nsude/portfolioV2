@@ -1,6 +1,7 @@
 import React from "react";
 import ProjectsList from "./ProjectsList";
 import PreviewModal from "./PreviewModal";
+import SplitLineText from "../global/SplitLineText";
 
 const listItems = [
   {
@@ -50,15 +51,31 @@ const listItems = [
 const Projects = () => {
   return (
     <section className="w-full h-screen text-60-title">
-      {[...listItems, ...listItems].map(({ name, services, year, duration, preview}, i) => (
-        <ProjectsList 
-          key={i}
-          name={name} 
-          services={services}
-          year={year}
-          duration={duration}
-        />
-      ))}
+      <div className="relative flex justify-between items-center w-full h-[40px] px-mobile lg:px-desktop-h ">
+        <div className="text-16-body flex justify-between w-[30%]">
+          <SplitLineText text={"Project"} textstyles={"p-list-start-text"} />
+          <SplitLineText text={"Service"} />
+        </div>
+
+        <div className="text-16-body flex justify-between w-[30%]">
+          <SplitLineText text={"Duration"} />
+          <SplitLineText text={"Year"} textstyles={"p-list-end-text"} />
+        </div>
+      </div>
+
+      <div>
+        {[...listItems, ...listItems].map(
+          ({ name, services, year, duration, preview }, i) => (
+            <ProjectsList
+              key={i}
+              name={name}
+              services={services}
+              year={year}
+              duration={duration}
+            />
+          )
+        )}
+      </div>
     </section>
   );
 };
