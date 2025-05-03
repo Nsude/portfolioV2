@@ -57,6 +57,7 @@ const listItems = [
 
 const Projects = () => {
   const [activePreview, setActivePreview] = useState(0);
+  const [modalActive, setModalActive] = useState(false);
   const containerRef = useRef();
   const modalRef = useRef();
 
@@ -93,8 +94,8 @@ const Projects = () => {
   return (
     <section
       ref={containerRef}
-      onMouseEnter={(e) => handleMouseEnter(e)}
-      onMouseMove={(e) => handleMouseMove(e)}
+      onMouseEnter={(e) => setModalActive(true)}
+      onMouseLeave={(e) => setModalActive(false)}
       className="w-full h-fit text-60-title relative group"
     >
       <div className=" relative flex justify-between items-center w-full h-[40px] px-mobile lg:px-desktop-h opacity-45 text-14-body">
@@ -126,15 +127,16 @@ const Projects = () => {
           )
         )}
 
-        <div
+        {/* <div
           ref={modalRef}
           className="absolute pointer-events-none group-hover:scale-100 scale-0 transition-[scale] duration-[400ms]"
         >
-          <PreviewModal
-            projects={[...listItems, ...listItems]}
-            activePreview={activePreview}
-          />
-        </div>
+        </div> */}
+        <PreviewModal
+          projects={[...listItems, ...listItems]}
+          activePreview={activePreview}
+          modalActive={modalActive}
+        />
       </div>
     </section>
   );

@@ -52,7 +52,7 @@ const Hamburger = () => {
           styles={`${
             menuOpen
               ? "bg-myAccent"
-              : "transition-[background] duration-400 delay-300 bg-myBlack"
+              : "transition-[background] duration-400 delay-300 lg:bg-myBlack"
           }`}
         >
           <div
@@ -62,11 +62,12 @@ const Hamburger = () => {
             <span
               ref={firstBarRef}
               className="w-[24px] h-[1px] bg-myBlack lg:bg-myWhite group-hover:bg-myBlack origin-center"
-              style={{}}
+              style={{backgroundColor: menuOpen ? "#000" : ""}}
             ></span>
             <span
               ref={secBarRef}
               className="w-[24px] h-[1px] bg-myBlack lg:bg-myWhite group-hover:bg-myBlack origin-center"
+              style={{backgroundColor: menuOpen ? "#000" : ""}}
             ></span>
           </div>
         </ButtonHighlight>
