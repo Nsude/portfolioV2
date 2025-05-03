@@ -48,6 +48,7 @@ const Hamburger = () => {
       <Magnetic>
         <ButtonHighlight
           handleClick={() => setMenuOpen(!menuOpen)}
+          allowEvents={true}
           styles={`${
             menuOpen
               ? "bg-myAccent"
@@ -56,15 +57,16 @@ const Hamburger = () => {
         >
           <div
             ref={containerRef}
-            className="flex flex-col items-center justify-center gap-y-[6px] h-[45px] aspect-square "
+            className="group flex flex-col items-center justify-center gap-y-[6px] h-[45px] aspect-square"
           >
             <span
               ref={firstBarRef}
-              className="w-[24px] h-[1px] bg-myBlack lg:bg-myWhite origin-center"
+              className="w-[24px] h-[1px] bg-myBlack lg:bg-myWhite group-hover:bg-myBlack origin-center"
+              style={{}}
             ></span>
             <span
               ref={secBarRef}
-              className="w-[24px] h-[1px] bg-myBlack lg:bg-myWhite origin-center"
+              className="w-[24px] h-[1px] bg-myBlack lg:bg-myWhite group-hover:bg-myBlack origin-center"
             ></span>
           </div>
         </ButtonHighlight>

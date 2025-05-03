@@ -7,7 +7,8 @@ const ButtonHighlight = ({
   handleClick = () => null,
   mouseEnterFunc = () => null,
   mouseLeaveFunc = () => null,
-  disabled = false
+  disabled = false,
+  allowEvents = false
 }) => {
   const btnRef = useRef();
   const highlightRef = useRef();
@@ -90,7 +91,7 @@ const ButtonHighlight = ({
         className="absolute left-0 top-0 h-full w-full bg-myAccent z-[0] opacity-0 pointer-events-none"
       />
       {/* Button Content */}
-      <div className="h-fit w-fit pointer-events-none relative z-1">
+      <div className="h-fit w-fit relative z-1" style={{pointerEvents: allowEvents ? "all" : "none"}}>
         {children}
       </div>
     </button>

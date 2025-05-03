@@ -64,7 +64,7 @@ const Marquee = ({ children }) => {
           end: "bottom top",
           scrub: true,
         }
-      }).then(() => gsap.set(velocitySlider, {x: 0}))
+      })
       
 
     },

@@ -10,6 +10,7 @@ const ProjectsList = ({
   services = "Design & Development",
   duration = "14 weeks",
   year = "2025",
+  handleMouseEnter = () => null
 }) => {
   const containerRef = useRef();
   const overlayRef = useRef();
@@ -56,7 +57,9 @@ const ProjectsList = ({
     return direction;
   };
 
-  const handleMouseEnter = (e) => {
+  const handleLocalMouseEnter = (e) => {
+    handleMouseEnter();
+
     const direction = detectEntryPoint(e);
     const overlay = overlayRef.current;
 
@@ -112,21 +115,25 @@ const ProjectsList = ({
   return (
     <button 
       ref={containerRef} 
-      onMouseEnter={(e) => handleMouseEnter(e)}
+      onMouseEnter={(e) => handleLocalMouseEnter(e)}
       onMouseLeave={(e) => handleMouseLeave(e)}
-      className="relative flex justify-between items-center w-full h-[40px] px-mobile lg:px-desktop-h p-list-con">
+      className="relative flex justify-between items-center w-full h-[40px] px-mobile lg:px-desktop-h p-list-con text-16-body">
 
       <span ref={overlayRef} className="absolute z-[-1] left-[20px] lg:left-[35px] right-[20px] lg:right-[35px] top-0 h-full bg-myBlack" />
 
       <span ref={(el) => bordersRef.current[0] = el} className="absolute left-[20px] lg:left-[35px] right-[20px] lg:right-[35px] top-0 h-[1px] bg-myBlack p-list-first-border" />
 
-      <div className="text-16-body flex justify-between w-[30%]">
+      <div className="basis-[50%] lg:basis-[20%] text-left">
         <SplitLineText text={name} textstyles={"p-list-start-text"} />
-        <SplitLineText text={services} />
       </div>
 
-      <div className="text-16-body flex justify-between w-[30%]">
+
+      <div className="basis-[50%] hidden lg:flex justify-between">
+        <SplitLineText text={services} />
         <SplitLineText text={duration} />
+      </div>
+
+      <div className="basis-[50%] lg:basis-[20%] text-right">
         <SplitLineText text={year} textstyles={"p-list-end-text"} />
       </div>
 
