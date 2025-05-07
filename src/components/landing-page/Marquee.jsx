@@ -38,7 +38,7 @@ const Marquee = ({ children }) => {
     gsap.set(marqueeRef.current, { xPercent });
     requestAnimationFrame(animation);
 
-    xPercent += 0.02 * direction;
+    xPercent += 0.009 * direction;
   };
 
   return (

@@ -3,7 +3,15 @@ import gsap from "gsap";
 import ButtonHighlight from "./ButtonHighlight";
 import { myEase1 } from "../utility/contansts";
 
-const CustomButton = ({ text, icon, bg, full, activeIcon = null, handleClick = () => null, disabled = false}) => {
+const CustomButton = ({
+  text,
+  icon,
+  bg,
+  full,
+  activeIcon = null,
+  handleClick = () => null,
+  disabled = false,
+}) => {
   const textConRef = useRef();
   const iconsRef = useRef();
 
@@ -16,20 +24,18 @@ const CustomButton = ({ text, icon, bg, full, activeIcon = null, handleClick = (
       ease: "power2.out",
     });
   };
-  
+
   const ease = myEase1;
   const nativeHandleClick = () => {
     handleClick();
 
-    console.log("llll")
     // animate icon
     if (!activeIcon) return;
-    console.log("working")
 
     const icons = iconsRef.current;
     gsap.killTweensOf(icons);
-    gsap.to(icons, {yPercent: -105, duration: .6, ease});
-  }
+    gsap.to(icons, { yPercent: -105, duration: 0.6, ease });
+  };
 
   const handleMouseleave = () => {
     animteText(false);
@@ -39,8 +45,8 @@ const CustomButton = ({ text, icon, bg, full, activeIcon = null, handleClick = (
 
     const icons = iconsRef.current;
     gsap.killTweensOf(icons);
-    gsap.to(icons, {yPercent: 0, duration: .6, ease});
-  }
+    gsap.to(icons, { yPercent: 0, duration: 0.6, ease });
+  };
 
   return (
     <ButtonHighlight
@@ -58,7 +64,9 @@ const CustomButton = ({ text, icon, bg, full, activeIcon = null, handleClick = (
           <>
             <div ref={iconsRef} className="absolute top-1">
               <div className="h-[13px] w-[13px]">{icon}</div>
-              <div className="h-[13px] w-[13px] translate-y-[110%]" >{activeIcon}</div>
+              <div className="h-[13px] w-[13px] translate-y-[110%]">
+                {activeIcon}
+              </div>
               {/* absolute so it doesn't scroll and the second acts as a placeholder */}
             </div>
             <div className="h-[13px] w-[13px]" />

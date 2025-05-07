@@ -2,7 +2,6 @@ import ProjectsList from "./ProjectsList";
 import PreviewModal from "./PreviewModal";
 import SplitLineText from "../global/SplitLineText";
 import { useRef, useState } from "react";
-import gsap from "gsap";
 
 const listItems = [
   {
@@ -61,36 +60,6 @@ const Projects = () => {
   const containerRef = useRef();
   const modalRef = useRef();
 
-  const handleMouseEnter = (e) => {
-    const modal = modalRef.current;
-    if (!modal) return;
-
-    const rect = modal.getBoundingClientRect();
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
-
-    gsap.set(modal, {
-      left: mouseX - rect.width / 2,
-      top: mouseY - rect.height / 2,
-    });
-  };
-
-  const handleMouseMove = (e) => {
-    const modal = modalRef.current;
-    if (!modal) return;
-
-    const rect = modal.getBoundingClientRect();
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
-
-    gsap.to(modal, {
-      left: mouseX - rect.width / 2,
-      top: mouseY - rect.height / 2,
-      duration: 0.2,
-      ease: "power3.out",
-    });
-  };
-
   return (
     <section
       ref={containerRef}
@@ -127,11 +96,6 @@ const Projects = () => {
           )
         )}
 
-        {/* <div
-          ref={modalRef}
-          className="absolute pointer-events-none group-hover:scale-100 scale-0 transition-[scale] duration-[400ms]"
-        >
-        </div> */}
         <PreviewModal
           projects={[...listItems, ...listItems]}
           activePreview={activePreview}

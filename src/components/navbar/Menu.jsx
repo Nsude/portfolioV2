@@ -84,7 +84,7 @@ const Menu = () => {
 
   const openEmail = () => {
     window.location.href =
-      "mailto:meshachnsd@gmail.com?subject=Collaboration%Proposal";
+      "mailto:meshachnsd@gmail.com?subject=Collaboration%20Proposal";
   };
 
   const navigateToSection = (sectionName) => {
