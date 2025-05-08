@@ -25,7 +25,6 @@ const Footer = () => {
     const borders = bordersRef.current;
     
     if (!(borders && copyButton)) return;
-    console.log(borders)
     gsap.set(borders, {clipPath: "polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%)"});
 
     const animateBorders = () => {
@@ -76,7 +75,7 @@ const Footer = () => {
       button.removeEventListener("mousemove", moveHandler);
       // make sure the revert isn't triggered over a previous revert
       if (revertInstance.current) return;
-      revertInstance.current = gsap.to(copyBox, {left: "25%", top: 0, duration: .8, delay: .8, ease: myEase1});
+      revertInstance.current = gsap.to(copyBox, {left: "25%", top: 0, duration: .8, delay: .4, ease: myEase1});
     }
 
   }, {scope: containerRef, dependencies: [trackCursor]})
