@@ -166,7 +166,7 @@ const Menu = () => {
         <CurvedPath />
       </nav>
     </div>
-    <div ref={blurOverlayRef} onClick={() => setMenuOpen(false)} className="fixed left-0 top-0 w-full h-full pointer-events-none z-[-1] bg-myWhite/20 backdrop-blur-[6px] opacity-0" />
+    <div ref={blurOverlayRef} onClick={() => setMenuOpen(false)} className="fixed left-0 top-0 w-full h-full pointer-events-none z-[-1] backdrop-blur-[6px] opacity-0" />
     </>
   );
 };
