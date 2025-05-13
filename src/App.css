@@ -34,3 +34,9 @@
 .arrow-icon-parent:hover path.arrow-icon {
   stroke: var(--color-myBlack);
 }
+
+@media screen and (max-width: 1023px) {
+  .arrow-icon-parent:hover path.arrow-icon {
+    stroke: var(--color-myWhite);
+  }
+}

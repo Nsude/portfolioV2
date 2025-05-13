@@ -1,9 +1,8 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import Checkmark from "../../assets/icons/Checkmark";
 import { useNavbarContext } from "../contexts/NavbarContext";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { CustomEase } from "gsap/all";
 import ToastShape from "../../assets/icons/ToastShape";
 import { myEase1 } from "../utility/contansts";
 

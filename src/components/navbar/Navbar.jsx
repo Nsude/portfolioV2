@@ -173,7 +173,7 @@ const Navbar = () => {
 
       <div
         ref={hamburgerRef}
-        style={{zIndex: `${testimonials.length + 2}`}}
+        style={{zIndex: `${testimonials.length + 3}`}}
         className="fixed top-[22px] right-[20px] z-[5] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[100px] lg:right-[unset] lg:top-[unset] bottom-[35px]"
       >
         <Hamburger />

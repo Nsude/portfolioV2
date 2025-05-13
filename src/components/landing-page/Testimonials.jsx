@@ -65,7 +65,7 @@ const Testimonials = () => {
   }
 
   return (
-    <section className='relative w-full h-[105vh] bg-myBlack text-myWhite my-[200px] p-mobile lg:p-desktop-h flex flex-col justify-center items-center overflow-hidden'>
+    <section className='relative w-full h-[105vh] bg-myBlack text-myWhite my-[200px] p-mobile lg:p-desktop-h flex flex-col lg:flex-row justify-center items-center overflow-hidden'>
       {/* TITLE TEXTS */}
       <div className='absolute left-0 top-0 p-mobile lg:p-desktop-h flex justify-between w-full text-14-body'>
         <span className='w-[65%]'>Testimonials</span>
@@ -82,8 +82,8 @@ const Testimonials = () => {
       </div>
 
       {/* TESTIMONIAL MODAL */}
-      <div className='w-full flex flex-col lg:flex-row items-center lg:px-desktop-h'>
-        <div className='w-[67%] lg:w-[65%] flex justify-center'>
+      <div className='w-full h-[72%] max-h-[75vh] lg:h-[unset] lg:max-h-[unset] flex flex-col lg:flex-row justify-between lg:justify-center xl:justify-normal items-center lg:gap-x-[135px] xl:gap-x-[0] lg:px-desktop-h'>
+        <div className='w-[67%] lg:w-[35%] xl:w-[65%] flex justify-center'>
           <TestimonialImageReveal 
             testimonials={testimonials} 
             activeIndex={activeIndex} 
@@ -91,15 +91,15 @@ const Testimonials = () => {
             isNext={isNext} />
         </div>
         
-        <div className='w-full lg:w-[22%]'>
-          <div className='flex flex-col gap-y-[10px] mb-[25px]'>
-            <span className='text-45-title testimonials-desc-text'>{testimonials[activeIndex].name}</span>
+        <div className='w-full lg:w-[40%] xl:w-[30%] 2xl:w-[22%]'>
+          <div className='flex flex-col gap-y-[5px] lg:gap-y-[10px] mb-[25px]'>
+            <span className='text-32-body lg:text-45-title testimonials-desc-text'>{testimonials[activeIndex].name}</span>
             <span className='opacity-40 text-14-body testimonials-desc-text'>{testimonials[activeIndex].title}</span>
           </div>
 
-          <p className='text-16-body lg:text-25-body testimonials-desc-text'>{testimonials[activeIndex].review}</p>
+          <p className='w-[80%] lg:w-[unset] text-16-body lg:text-25-body testimonials-desc-text'>{testimonials[activeIndex].review}</p>
 
-          <div className='absolute flex gap-x-[15px] bottom-[10%] lg:bottom-[25%]'>
+          <div className='absolute flex gap-x-[15px] bottom-[5%] lg:bottom-[25%]'>
             <Magnetic>
               <ButtonHighlight 
                 handleClick={handlePrev}
