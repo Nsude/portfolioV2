@@ -24,3 +24,13 @@
 .p-list-con:hover .p-list-end-text {
   transform: translateX(-12px);
 }
+
+
+/* ARROW ICON */
+.arrow-icon-parent path.arrow-icon {
+  transition: stroke 200ms linear;
+}
+
+.arrow-icon-parent:hover path.arrow-icon {
+  stroke: var(--color-myBlack);
+}

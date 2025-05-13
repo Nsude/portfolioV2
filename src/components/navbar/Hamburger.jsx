@@ -43,8 +43,7 @@ const Hamburger = () => {
   );
 
   return (
-    <div
-    >
+    <div>
       <Magnetic>
         <ButtonHighlight
           handleClick={() => setMenuOpen(!menuOpen)}

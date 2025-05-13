@@ -13,6 +13,7 @@ import gsap from "gsap";
 import useDevice from "../hooks/useDevice";
 import Notification from "../global/Notification";
 import { myEase1 } from "../utility/contansts";
+import { testimonials } from "../global/DummyData";
 
 const Navbar = () => {
   const { navLinks, sectionRefs, setNavbarHidden, copyEmail, setNavlinksLeft , emailCopied} =
@@ -172,6 +173,7 @@ const Navbar = () => {
 
       <div
         ref={hamburgerRef}
+        style={{zIndex: `${testimonials.length + 2}`}}
         className="fixed top-[22px] right-[20px] z-[5] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[100px] lg:right-[unset] lg:top-[unset] bottom-[35px]"
       >
         <Hamburger />

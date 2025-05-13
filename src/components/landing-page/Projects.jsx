@@ -2,63 +2,12 @@ import ProjectsList from "./ProjectsList";
 import PreviewModal from "./PreviewModal";
 import SplitLineText from "../global/SplitLineText";
 import { useRef, useState } from "react";
-
-const listItems = [
-  {
-    name: "Marcette Website",
-    services: "Development",
-    duration: "8 weeks",
-    year: "2025",
-    preview: "/src/assets/images/Placeholder.png",
-    color: "#5DEA7C",
-  },
-  {
-    name: "Harlow eCommerce",
-    services: "Design & Development",
-    duration: "14 weeks",
-    year: "2025",
-    preview: "/src/assets/images/Placeholder.png",
-    color: "#E3E3E3",
-  },
-  {
-    name: "Polygene Webapp",
-    services: "Development",
-    duration: "8 weeks",
-    year: "2025",
-    preview: "/src/assets/images/Placeholder.png",
-    color: "#F2F2F2",
-  },
-  {
-    name: "Daisy’s Landing Page",
-    services: "Design & Development",
-    duration: "10 weeks",
-    year: "2024",
-    preview: "/src/assets/images/Placeholder.png",
-    color: "#121212",
-  },
-  {
-    name: "Count Dane Website",
-    services: "Design & Development",
-    duration: "14 weeks",
-    year: "2024",
-    preview: "/src/assets/images/Placeholder.png",
-    color: "#DDD",
-  },
-  {
-    name: "Johnny Website",
-    services: "Design & Development",
-    duration: "12 weeks",
-    year: "2024",
-    preview: "/src/assets/images/Placeholder.png",
-    color: "pink",
-  },
-];
+import { projectList } from "../global/DummyData";
 
 const Projects = () => {
   const [activePreview, setActivePreview] = useState(0);
   const [modalActive, setModalActive] = useState(false);
   const containerRef = useRef();
-  const modalRef = useRef();
 
   return (
     <section
@@ -83,7 +32,7 @@ const Projects = () => {
       </div>
 
       <div>
-        {[...listItems, ...listItems].map(
+        {[...projectList, ...projectList].map(
           ({ name, services, year, duration }, i) => (
             <ProjectsList
               key={i}
@@ -97,7 +46,7 @@ const Projects = () => {
         )}
 
         <PreviewModal
-          projects={[...listItems, ...listItems]}
+          projects={[...projectList, ...projectList]}
           activePreview={activePreview}
           modalActive={modalActive}
         />

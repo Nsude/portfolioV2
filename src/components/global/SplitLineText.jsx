@@ -26,14 +26,8 @@ const SplitLineText = ({ text, textstyles }) => {
             SplitText.create(textCon, {
               type: "lines",
               autoSplit: true,
+              mask: "lines",
               onSplit: (self) => {
-                // create masks
-                self.lines.forEach((line) => {
-                  const mask = document.createElement("div");
-                  mask.style.overflow = "hidden";
-                  line.parentNode?.insertBefore(mask, line);
-                  mask.appendChild(line);
-                });
 
                 // animate lines
                 gsap.from(self.lines, {

@@ -21,11 +21,12 @@ body {
 
 @theme {
   /* ===== COLOUR ===== */
-  --color-myGray: #E3E3E3;
+  --color-myGray: #e3e3e3;
   --color-myBlack: #000;
-  --color-myWhite: #FDFDFD;
-  --color-myAccent: #5DEA7C;
-  
+  --color-myDusk: #121212;
+  --color-myWhite: #fdfdfd;
+  --color-myAccent: #5dea7c;
+
   /* ===== TYPOGRAPHY ===== */
   --font-main: "Neue Montreal", "Sans Serif";
   --text-14-body: 14px;
@@ -66,8 +67,10 @@ body {
   --text-large-m--letter-spacing: -0.01ch;
   --text-large-m--line-height: 0.94;
 
-
   /* ===== PADDING ===== */
   --padding-desktop-h: 35px;
-  --padding-mobile:25px;
+  --padding-mobile: 25px;
+
+  /* ===== SHADOW ===== */
+  --shadow-testimonials: -10px -35px 35px 35px rgba(0, 0, 0, 0.25);
 }
