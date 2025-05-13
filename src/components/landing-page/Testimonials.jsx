@@ -12,6 +12,7 @@ import { useGSAP } from '@gsap/react';
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [allowNavigation, setAllowNavigation] = useState(true);
+  const [isNext, setIsNext] = useState(true);
   const reviewsNo = testimonials.length;
 
   useGSAP(() => {
@@ -42,20 +43,25 @@ const Testimonials = () => {
 
   const handleNext = () => {
     if (!allowNavigation) return null;
+    toggleAllowNavigation();
+    setIsNext(true);
+
     if (activeIndex >= reviewsNo - 1 ) {
       return setActiveIndex(0);
     }
     setActiveIndex(prev => prev += 1);
-    toggleAllowNavigation();
   }
 
   const handlePrev = () => {
     if (!allowNavigation) return null;
+    toggleAllowNavigation();
+    setIsNext(false);
+
     if (activeIndex == 0) {
+      console.log('I am zero')
       return setActiveIndex(reviewsNo - 1);
     }
     setActiveIndex(prev => prev -= 1);
-    toggleAllowNavigation();
   }
 
   return (
@@ -78,7 +84,11 @@ const Testimonials = () => {
       {/* TESTIMONIAL MODAL */}
       <div className='w-full flex flex-col lg:flex-row items-center lg:px-desktop-h'>
         <div className='w-[67%] lg:w-[65%] flex justify-center'>
-          <TestimonialImageReveal testimonials={testimonials} activeIndex={activeIndex} allowNavigation={allowNavigation} />
+          <TestimonialImageReveal 
+            testimonials={testimonials} 
+            activeIndex={activeIndex} 
+            allowNavigation={allowNavigation} 
+            isNext={isNext} />
         </div>
         
         <div className='w-full lg:w-[22%]'>

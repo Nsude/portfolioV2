@@ -7,6 +7,7 @@ const TestimonialImageReveal = ({
   testimonials,
   activeIndex,
   allowNavigation,
+  isNext
 }) => {
   const total = testimonials.length;
   const containerRef = useRef();
@@ -37,24 +38,21 @@ const TestimonialImageReveal = ({
         });
       };
 
-      if (
-        activeIndex > prevIndex.current ||
-        (prevIndex.current === total - 1 && activeIndex === 0)
-      ) {
-        let prevReset = false;
-        images.forEach((img) => {
-          let currentRotate = parseInt(gsap.getProperty(img, "rotate"));
-          tl.to(
-            img,
-            {
-              rotate: `${currentRotate - 5}deg`,
-              duration: 0.6,
-              ease: myEase1,
-            },
-            "<"
-          );
-        });
+      // handle navigation
+      if (prev === activeIndex) return;
+      images.forEach((img) => {
+        let currentRotate = parseInt(gsap.getProperty(img, "rotate"));
+        tl.to(img,{
+          rotate: isNext ? `${currentRotate - 5}deg` : `${currentRotate + 5}deg`,
+          duration: 0.6,
+          ease: myEase1,
+        },"<");
+      });
 
+
+      // animate the previous image on isNext
+      if (isNext) {
+        let prevReset = false;
         const prevAnimation = tl.to(
           prevImage,
           {
@@ -66,7 +64,7 @@ const TestimonialImageReveal = ({
               if (currentOpacity < 0.2 && !prevReset) {
                 prevReset = true;
                 prevAnimation.kill();
-
+  
                 gsap.set(prevImage, { zIndex: 0, rotate: `${5 * total}deg` });
                 
                 gsap.fromTo(
@@ -85,6 +83,34 @@ const TestimonialImageReveal = ({
           },
           "<"
         );
+
+        // isPrev
+      } else {
+        // get last image index 
+        // we're doing it this way cause we can't rely on the DOM
+        let lastImageIndex = layers.current.findIndex(z => z === 0);
+
+        // set the last image to the highest index in the layers and reduce others by 1
+        layers.current = layers.current.map((zIndex, i) => {
+          if (lastImageIndex === i) return total - 1;
+          const reduced = zIndex - 1;
+          return reduced < 0 ? total - 1 : reduced;
+        })
+
+        // reset the index of the images
+        images.forEach((img, i) => {
+          gsap.set(img, {zIndex: layers.current[i]});
+
+          if (i !== lastImageIndex) return;
+          gsap.fromTo(img, {
+            rotate: '0deg', opacity: 0
+          }, {
+            rotate: '5deg', 
+            opacity: 1, 
+            duration: .6, 
+            ease: myEase1
+          })
+        })
       }
 
       // reset prevIndex
