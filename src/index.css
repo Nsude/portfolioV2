@@ -19,6 +19,11 @@ body {
   color: var(--color-myBlack);
 }
 
+::selection {
+  background-color: var(--color-myBlack);
+  color: var(--color-myAccent);
+}
+
 @theme {
   /* ===== COLOUR ===== */
   --color-myGray: #e3e3e3;
