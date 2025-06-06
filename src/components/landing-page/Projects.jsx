@@ -33,13 +33,10 @@ const Projects = () => {
 
       <div>
         {[...projectList, ...projectList].map(
-          ({ name, services, year, duration }, i) => (
+          (project, i) => (
             <ProjectsList
               key={i}
-              name={name}
-              services={services}
-              year={year}
-              duration={duration}
+              project={project}
               handleMouseEnter={() => setActivePreview(i)}
             />
           )

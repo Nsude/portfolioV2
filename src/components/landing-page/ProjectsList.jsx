@@ -6,10 +6,12 @@ import observeElement from "../utility/customObserver";
 import SplitLineText from "../global/SplitLineText"
 
 const ProjectsList = ({
-  name = "Client Website",
-  services = "Design & Development",
-  duration = "14 weeks",
-  year = "2025",
+  project: {
+    name = "Client Website",
+    services = "Design & Development",
+    duration = "14 weeks",
+    year = "2025"
+  },
   handleMouseEnter = () => null
 }) => {
   const containerRef = useRef();
@@ -26,7 +28,7 @@ const ProjectsList = ({
     
     if (!overlay || borders.length === 0 || !con) return;
     // hide overlay
-    gsap.set(overlay, {clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)"});
+    gsap.set(overlay, {clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)'});
     // hide borders
     gsap.set(borders, {clipPath: "polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%)"});
 
@@ -67,26 +69,21 @@ const ProjectsList = ({
     gsap.killTweensOf(overlay);
     
     if (direction === "top") {
-      // hide to top
-      gsap.set(overlay, {clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)"});
-
-      gsap.to(overlay, {
-        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-        duration: listHoverDuration,
-        ease
+      gsap.fromTo(overlay, {
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)'
+      }, {
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+        duration: .25,
+        ease: "power2.out"
       })
     } else {
-      // Start fully hidden at bottom (rectangle collapsed to bottom edge)
-      gsap.set(overlay, {
-        clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"
-      });
-
-      // Animate to fully revealed rectangle
-      gsap.to(overlay, {
-        clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-        duration: listHoverDuration,
-        ease
-      });
+      gsap.fromTo(overlay, {
+        clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)'
+      }, {
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+        duration: .25,
+        ease: "power2.out"
+      })
     }
   }
 
@@ -97,18 +94,22 @@ const ProjectsList = ({
     if (!overlay) return;
 
     if (direction === "bottom") {
-      gsap.to(overlay, {
-        clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 100% 100%)",
-        duration: listHoverDuration,
-        ease
-      })
-    } else {
-      gsap.to(overlay, {
-        clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
-        duration: listHoverDuration,
-        ease
-      })
-    }
+        gsap.fromTo(overlay, {
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
+        }, {
+          clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
+          duration: .25,
+          ease: "power2.out"
+        })
+      } else {
+        gsap.fromTo(overlay, {
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
+        }, {
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
+          duration: .25,
+          ease: "power2.out"
+        })
+      }
   }
 
 
