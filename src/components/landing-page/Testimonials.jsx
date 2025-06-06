@@ -22,16 +22,12 @@ const Testimonials = () => {
       mask: "lines"
     })
 
-    gsap.fromTo(split.lines, 
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        ease: "power3.out",
-        stagger: {
-          amount: .4
-        }
-      })
+    gsap.from(split.lines, { 
+      y: isNext ? 40 : -40, 
+      opacity: 0,
+      stagger: { amount: .3 },
+      ease: "power3.out"
+    })
   }, [activeIndex])
 
   const toggleAllowNavigation = () => {
