@@ -103,7 +103,7 @@ const Footer = () => {
             <span className='w-[90px] h-[50px] hidden overflow-hidden lg:inline-block rounded-4xl'> 
               <img 
                 className='w-full h-full object-cover'
-                src="/src/assets/images/profile-image.webp" 
+                src="/images/profile-image.webp" 
                 alt="small-headshot" />
             </span>
           </SlideIn>
@@ -113,7 +113,7 @@ const Footer = () => {
               <span className='w-[90px] h-[50px] overflow-hidden inline-block lg:hidden rounded-4xl'> 
                 <img 
                   className='w-full h-full object-cover'
-                  src="/src/assets/images/profile-image.webp" 
+                  src="/images/profile-image.webp" 
                   alt="small-headshot" />
               </span>
               <span> Something </span>

@@ -15,7 +15,7 @@ body {
   box-sizing: border-box;
   line-height: 1;
   background-color: var(--color-myWhite);
-  font-family: var(--font-main);
+  font-family: var(--font-main), Arial, Helvetica, sans-serif;
   color: var(--color-myBlack);
 }
 
@@ -28,7 +28,7 @@ body {
   --color-myAccent: #5dea7c;
 
   /* ===== TYPOGRAPHY ===== */
-  --font-main: "Neue Montreal", "Sans Serif";
+  --font-main: "Neue Montreal";
   --text-14-body: 14px;
   --text-16-body--letter-spacing: 0.01ch;
   --text-16-body--line-height: 1.3;
